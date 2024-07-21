@@ -2,7 +2,7 @@
 
 USRID=$(id -u)
 TIMESTAMP=$(date +%F-%H-%M-%S)
-SCRIPT_NAME=$(echo $0 -d "." -f1)
+SCRIPT_NAME=$(echo $0 | -d "." -f1)
 LOGFILE=/tmp/$SCRIPT_NAME-$TIMESTAMP.log
 R="\e[31m"
 G="\e[32m"
@@ -22,7 +22,7 @@ VALIDATE(){
         echo -e "$G $i is already installed $N"
         exit 1
     else
-        echo -e "$G proceeding with the instalation of $1"
+        echo -e "$G proceeding with the instalation of $i"
     fi
 }
 
