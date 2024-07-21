@@ -7,7 +7,8 @@ N="\e[0m"
 
 if [ $USRID -eq 0 ]
 then
-    echo "$G you are with root user, so proceding with instation $N"
+    echo -e "$G you are with root user, so proceding with instation $N"
+    exit 1
 else
-    echo "$G please shiwch to root user $N"
+    echo -e "$R please shiwch to root user $N"
 fi
