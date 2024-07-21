@@ -27,10 +27,9 @@ VALIDATE(){
 }
 
 for i in $@
-
 do
     echo "Checking for the package : $i"
-    dnf list installed $i &>> LOGFILE
+    dnf list installed $i &>>$LOGFILE
     VALIDATE $? "installion of $i"
     dnf install $i -y &>>$LOGFILE
 done
