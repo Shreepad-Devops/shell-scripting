@@ -30,6 +30,6 @@ for i in $@
 do
     echo "Checking for the package : $i"
     dnf list installed $i &>>$LOGFILE
-    VALIDATE $? "installion of $i"
+    VALIDATE $?
     dnf install $i -y &>>$LOGFILE
 done
