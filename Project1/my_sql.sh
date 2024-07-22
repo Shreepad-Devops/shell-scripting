@@ -34,17 +34,17 @@ echo "checking the package for the installtion"
 dnf list installed mysql &>> $LOGFILE
 if [ $? -ne 0 ]
 then
-    dnf install mysql-server -y @>> $LOGFILE
+    dnf install mysql-server -y &>> $LOGFILE
     VALIDATE $? "Installtion of mysql:"
 else
     echo -e "mysql is already installed..$Y SKIPPING $N"
 fi
 
-echo "enable of mysql" @>> $LOGFILE
+echo "enable of mysql" &>> $LOGFILE
 systemctl enable mysqld
 VALIDATE @? "enable of mysql:"
 
-echo "Start of mysql" @>> $LOGFILE
+echo "Start of mysql" &>> $LOGFILE
 systemctl start mysqld
 VALIDATE @? "Start of mysql:"
 
