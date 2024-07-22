@@ -2,7 +2,7 @@
 USERID=$(id -u)
 FILENAME=$(echo $0 | cut -d "." -f1)
 TIMESTAMP=$(date +%f%H%M%S)
-LODFILE=/tmp/$FILENAME-$TIMESTAMP.log
+LOGFILE=/tmp/$FILENAME-$TIMESTAMP.log
 echo "Enter the DB server name"
 read SERVER_NAME
 echo "Enter the password for datebase"
@@ -35,7 +35,7 @@ dnf list installed mysql &>> $LOGFILE
 if [ $? -ne 0 ]
 then
     dnf install mysql-server -y @>> $LOGFILE
-    VALIDATE @? "Installtion of mysql:"
+    VALIDATE $? "Installtion of mysql:"
 else
     echo -e "mysql is already installed..$Y SKIPPING $N"
 fi
