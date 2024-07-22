@@ -12,7 +12,7 @@ G="\e[32m"
 Y="\e[33m"
 N="\e[33m"
 
-if [ USERID -ne 0 ]
+if [ $USERID -ne 0 ]
 then
     echo -e "Please swith to $R root user $N"
     exit 1
@@ -32,7 +32,7 @@ VALIDATE(){
 
 echo "checking the package for the installtion"
 dnf list installed mysql &>> $LOGFILE
-if [ $? -nq 0 ]
+if [ $? -ne 0 ]
 then
     dnf install mysql-server -y @>> $LOGFILE
     VALIDATE @? "Installtion of mysql:"
