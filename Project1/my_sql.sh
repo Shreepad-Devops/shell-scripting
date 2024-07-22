@@ -12,7 +12,7 @@ G="\e[32m"
 Y="\e[33m"
 N="\e[33m"
 
-if [ USERID -nq 0 ]
+if [ USERID -ne 0 ]
 then
     echo -e "Please swith to $R root user $N"
     exit 1
@@ -27,6 +27,7 @@ VALIDATE(){
     else
         echo -e "$2..$G FAILURE $N"
         exit 1
+    fi
 }
 
 echo "checking the package for the installtion"
