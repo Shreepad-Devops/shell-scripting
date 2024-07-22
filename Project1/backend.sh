@@ -5,7 +5,7 @@ SCRIPT_NAME=$(echo $0 | cut -d "." -f1)
 TIME_STAMP=$(date +%F-%H-%M-%S)
 LOGFILE=/tmp/$SCRIPT_NAME-$TIME_STAMP.log
 Source_Dir=/home/ec2-user/shell-scripting/Project1
-DB_Server_IP=172.31.58.66
+DB_Server_IP="172.31.58.66"
 R="\e[31m"
 G="\e[32m"
 Y="\e[33m"
@@ -52,7 +52,7 @@ curl -o /tmp/backend.zip https://expense-builds.s3.us-east-1.amazonaws.com/expen
 VALIDATE $? "download the application"
 
 cd /app
-unzip /tmp/backend.zip &>> $LOGFILE
+unzip -p /tmp/backend.zip &>> $LOGFILE
 VALIDATE $? "extract the application"
 
 cd /app
