@@ -17,7 +17,7 @@ then
 else
     echo -e "Please swith to $R root $N user"
     exit 1
-if
+fi
 
 VALIDATE(){
 if [ $1 -eq 0 ]
