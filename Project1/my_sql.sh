@@ -1,7 +1,7 @@
 #!/bin/bash
 USERID=$(id -u)
 FILENAME=$(echo $0 | cut -d "." -f1)
-TIMESTAMP=$(date -%f%H%M%S)
+TIMESTAMP=$(date +%f%H%M%S)
 LODFILE=/tmp/$FILENAME-$TIMESTAMP.log
 echo "Enter the DB server name"
 read SERVER_NAME
