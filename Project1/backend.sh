@@ -52,7 +52,7 @@ curl -o /tmp/backend.zip https://expense-builds.s3.us-east-1.amazonaws.com/expen
 VALIDATE $? "download the application"
 
 cd /app
-unzip /tmp/backend.zip $LOGFILE
+unzip /tmp/backend.zip &>> $LOGFILE
 VALIDATE $? "extract the application"
 
 cd /app
@@ -72,9 +72,9 @@ VALIDATE $? "Start the service"
 dnf list installed mysql &>> $LOGFILE
 if [ $? -eq 0 ]
 then
-    echo "my sql is already installed....$Y SKIPPING &N"
+    echo -e "my sql is already installed....$Y SKIPPING $N"
 else
-    nf install mysql -y &>> $LOGFILE
+    dnf install mysql -y &>> $LOGFILE
     VALIDATE $? "install mysql client"
 fi
 
