@@ -1,7 +1,7 @@
 #!/bin/bash
 USERID=$(id -u)
 FILENAME=$(echo $0 | cut -d "." -f1)
-TIMESTAMP=$(date +%f%H%M%S)
+TIMESTAMP=$(date +%F%H%M%S)
 LOGFILE=/tmp/$FILENAME-$TIMESTAMP.log
 echo "Enter the DB server name"
 read SERVER_NAME
@@ -42,11 +42,11 @@ fi
 
 echo "enable of mysql" &>> $LOGFILE
 systemctl enable mysqld
-VALIDATE @? "enable of mysql:"
+VALIDATE $? "enable of mysql:"
 
 echo "Start of mysql" &>> $LOGFILE
 systemctl start mysqld
-VALIDATE @? "Start of mysql:"
+VALIDATE $? "Start of mysql:"
 
 echo "setting up the password for the root"
 mysql -h$SERVER_NAME -uroot -p$PASS -e 'show databases;' @>> $LOGFILE
@@ -55,7 +55,7 @@ then
     echo "Password is already set for the user root"
 else
     mysql_secure_installation --set-root-pass ExpenseApp@1 @>> $LOGFILE
-    VALIDATE @? "Password set for user:"
+    VALIDATE $? "Password set for user:"
 fi
 
 
