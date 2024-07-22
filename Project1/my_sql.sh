@@ -49,12 +49,12 @@ systemctl start mysqld
 VALIDATE $? "Start of mysql:"
 
 echo "setting up the password for the root"
-mysql -h$SERVER_NAME -uroot -p$PASS -e 'show databases;' @>> $LOGFILE
+mysql -h$SERVER_NAME -uroot -p$PASS -e 'show databases;' &>> $LOGFILE
 if [ $? -eq 0 ]
 then
     echo "Password is already set for the user root"
 else
-    mysql_secure_installation --set-root-pass ExpenseApp@1 @>> $LOGFILE
+    mysql_secure_installation --set-root-pass $PASS &>> $LOGFILE
     VALIDATE $? "Password set for user:"
 fi
 
