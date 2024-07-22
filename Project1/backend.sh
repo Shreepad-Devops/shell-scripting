@@ -83,8 +83,3 @@ VALIDATE $? "Load Schema"
 
 systemctl restart backend &>> $LOGFILE
 VALIDATE $? "Restart the service"
-
-
-
-
-
