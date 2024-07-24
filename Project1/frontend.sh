@@ -45,7 +45,7 @@ cd /usr/share/nginx/html
 unzip /tmp/frontend.zip &>> LOGFILE
 VALIDATE $? "Extract the frontend content :"
 
-cp /expense.conf /etc/nginx/default.d/
+cp /home/ec2-user/shell-scripting/Project1/expense.conf /etc/nginx/default.d/
 
 systemctl restart nginx &>> LOGFILE
 VALIDATE $? "Start nginx"
