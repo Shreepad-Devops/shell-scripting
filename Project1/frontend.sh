@@ -9,7 +9,7 @@ G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
 
-if [ USERID -eq 0 ]
+if [ $USERID -eq 0 ]
 then
     echo -e "you are already with $G ROOT user $N, proceeding further"
 else
