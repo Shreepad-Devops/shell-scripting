@@ -13,7 +13,7 @@ if [ USERID -eq 0 ]
 then
     echo -e "you are already with $G ROOT user $N, proceeding further"
 else
-    echo -e "you are swith to $R super User $N"
+    echo -e "please swith to $R super User $N and try"
     exit 1
 fi
 
