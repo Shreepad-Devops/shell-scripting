@@ -92,5 +92,6 @@ do
 	while [[ $result != *"Successfully Finished Loading Collections"* ]]; do
     echo "Waiting for startup..."
     sleep 5
+    done
 done
 VALIDATE $? "collections load on MainSystem1 is :"
