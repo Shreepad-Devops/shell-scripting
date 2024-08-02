@@ -30,5 +30,6 @@ VALIDATE $? "vaidation of HF is :"
 for i in 172.31.88.146 , 172.31.82.79
 do
 	ssh ec2-user@$i
-    echo "now i am in the server $i"
+    echo -e "$G now i am in the server $i $N"
+    exit 1
 done
