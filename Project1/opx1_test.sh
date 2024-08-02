@@ -31,11 +31,13 @@ for i in 'cat server_list'
 do
 	echo -e "$G now i am in the server $i $N"
     ssh -q ec2-user@$i
+    cd /home/ec2-user
     mkdir test1
 done
 
 for i in 'cat server_list'
 do
     ssh -q ec2-user@$i
+    cd /home/ec2-user
     mkdir test2
 done
