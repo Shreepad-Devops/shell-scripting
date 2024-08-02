@@ -37,7 +37,5 @@ done
 SERVER_LIST=/home/ec2-user/shell-scripting/Project1/server_list
 while read REMOTE_SERVER
 do
-        ssh ec2-user@$REMOTE_SERVER;
-        cd /home/ec2-user;
-        mkdir test3;
+        ssh -q ec2-user@$REMOTE_SERVER "cd /home/ec2-user; mkdir test3"
 done < $SERVER_LIST
