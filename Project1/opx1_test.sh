@@ -31,11 +31,11 @@ for i in 'cat server_list'
 do
 	echo -e "$G now i am in the server $i $N"
     ssh -q ec2-user@$i
-    touch test1
+    mkdir test1
 done
 
 for i in 'cat server_list'
 do
     ssh -q ec2-user@$i
-    touch test2
+    mkdir test2
 done
