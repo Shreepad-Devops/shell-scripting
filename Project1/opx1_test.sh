@@ -30,8 +30,8 @@ VALIDATE $? "vaidation of HF is :"
 for i in "172.31.88.146" "172.31.82.79"
 do
     ssh -q ec2-user@$i
-    cd /home/ec2-user
-    mkdir test1
+    cd /home/ec2-user;
+    mkdir test1;
 done
 
 for i in "172.31.88.146" "172.31.82.79"
