@@ -27,14 +27,14 @@ cd /home/ec2-user/hotfix/HOTFIX/OPX/Release_$release/HF_$HF
 
 VALIDATE $? "vaidation of HF is :"
 
-for i in 'cat server_list'
+for i in $(cat server_list)
 do
     ssh -q ec2-user@$i
     cd /home/ec2-user
     mkdir test1
 done
 
-for i in 'cat server_list'
+for i in $(cat server_list)
 do
     ssh -q ec2-user@$i "cd /home/ec2-user; mkdir test2;"
 done
