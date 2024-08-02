@@ -27,15 +27,15 @@ cd /home/ec2-user/hotfix/HOTFIX/OPX/Release_$release/HF_$HF
 
 VALIDATE $? "vaidation of HF is :"
 
-for i in 172.31.88.146 172.31.82.79;
+for i in 'cat server_list'
 do
 	echo -e "$G now i am in the server $i $N"
-    ssh ec2-user@$i
+    ssh -q ec2-user@$i
     touch test1
 done
 
-for i in 172.31.88.146 172.31.82.79;
+for i in 'cat server_list'
 do
-    ssh ec2-user@$i
+    ssh -q ec2-user@$i
     touch test2
 done
