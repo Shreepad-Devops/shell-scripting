@@ -13,6 +13,7 @@ VALIDATE(){
 		echo -e "$2 ...$G Success $N"
 	else
 		echo -e "$2 ...$R Failure $N"
+        exit 1
 	fi
 }
 
@@ -25,3 +26,5 @@ read "release"
 cd /home/ec2-user/hotfix/HOTFIX/OPX/Release_$release/HF_$HF
 
 VALIDATE $? "vaidation of HF is :"
+
+echo "testing" 
