@@ -27,4 +27,8 @@ cd /home/ec2-user/hotfix/HOTFIX/OPX/Release_$release/HF_$HF
 
 VALIDATE $? "vaidation of HF is :"
 
-echo "testing" 
+for i in [ ukpe03vr, ukpe04vr ]
+do
+	ssh petopx1@$i
+    echo "now i am in the server $i"
+done
