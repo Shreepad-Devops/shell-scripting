@@ -29,9 +29,9 @@ VALIDATE $? "vaidation of HF is :"
 
 for i in 'cat server_list'
 do
-    ssh -q ec2-user@$i "hostname";
-    cd /home/ec2-user;
-    mkdir test1;
+    ssh -q ec2-user@$i
+    cd /home/ec2-user
+    mkdir test1
 done
 
 for i in 'cat server_list'
