@@ -27,14 +27,8 @@ cd /home/ec2-user/hotfix/HOTFIX/OPX/Release_$release/HF_$HF
 
 VALIDATE $? "vaidation of HF is :"
 
-SERVER_LIST=/home/ec2-user/shell-scripting/Project1/server_list
-while read REMOTE_SERVER
-do
-        ssh ec2-user@$REMOTE_SERVER "cd /home/ec2-user; mkdir test3"
-done < $SERVER_LIST
-
-Servers=("172.31.88.146"
-"172.31.82.79")
+Servers=("184.73.51.246"
+"18.233.163.39")
 
 User=ec2-user
 
