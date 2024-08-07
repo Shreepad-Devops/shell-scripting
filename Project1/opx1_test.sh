@@ -38,7 +38,7 @@ touch opx"
 )
 
 Task2=(
-	"cd /home/ec2-user/test4;
+	"cd /home/ec2-user/test3;
 	scp -r * '${User}@184.73.51.246':/home/ec2-user/test5/;
 	scp -r * '${User}@18.233.163.39':/home/ec2-user/test5/"
 )
