@@ -37,8 +37,8 @@ mkdir test5"
 )
 
 Task2=(
-	"cd /home/ec2-user"
-	"mkdir test5"
+	"cd /home/ec2-user;
+	mkdir test5"
 )
 for server in "${Servers[@]}"; do
 	echo "Exicuting: tasks on $server"
