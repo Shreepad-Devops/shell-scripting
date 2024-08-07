@@ -47,7 +47,4 @@ for server in "${Servers[@]}"; do
 	ssh "${User}@${server}" "${Tasks}"
 done
 
-for server in "${Servers[@]}"; do
-	echo "Exicuting: tasks on $server"
-	"${Task2}"
-done
+$Tasks
