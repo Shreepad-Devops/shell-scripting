@@ -51,7 +51,7 @@ done
 for server in "${Servers[@]}"; do
 	cd /home/ec2-user/test5/test3
 	sh Load.sh
-	result=grep -i "Successfully Finished Loading Collections" Status.txt.log	
+	result=grep "Successfully Finished Loading Collections" Status.txt.log	
 	while [[ $result != *"Successfully Finished Loading Collections"* ]]; do
     echo "Waiting for startup..."
     sleep 2
