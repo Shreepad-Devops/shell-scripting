@@ -49,5 +49,5 @@ done
 
 for server in "${Servers[@]}"; do
 	echo "Exicuting: tasks on $server"
-	ssh "${User}@${server}" "${Task2}"
+	"${Task2}"
 done
