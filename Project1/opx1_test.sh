@@ -47,4 +47,4 @@ for server in "${Servers[@]}"; do
 	ssh "${User}@${server}" "${Tasks}"
 done
 
-$Tasks
+$Task2
