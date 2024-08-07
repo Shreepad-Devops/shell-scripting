@@ -37,14 +37,14 @@ mkdir test_01;
 touch opx"
 )
 
-Task2=(
-	"cd /home/ec2-user/test3;
-	scp -r * '${User}'@184.73.51.246:/home/ec2-user/test5/;
-	scp -r * '${User}'@18.233.163.39:/home/ec2-user/test5/"
-)
 for server in "${Servers[@]}"; do
 	echo "Exicuting: tasks on $server"
 	ssh "${User}@${server}" "${Tasks}"
 done
 
-$Task2
+for server in "${Servers[@]}"; do
+	echo "Exicuting: tasks on $server"
+	cd /home/ec2-user/test3
+	scp -r * ${User}@184.73.51.246:/home/ec2-user/test5/
+	scp -r * ${User}@18.233.163.39:/home/ec2-user/test5/
+done
