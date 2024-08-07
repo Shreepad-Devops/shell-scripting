@@ -47,3 +47,13 @@ for server in "${Servers[@]}"; do
 	cd /home/ec2-user/test3
 	scp -r * ${User}@${server}:/home/ec2-user/test5/
 done
+
+for server in "${Servers[@]}"; do
+	cd /home/ec2-user/test5/test3
+	sh Load.sh
+	result=grep -i "Successfully Finished Loading Collections" Status.txt.log	
+	while [[ $result != *"Successfully Finished Loading Collections"* ]]; do
+    echo "Waiting for startup..."
+    sleep 2
+    done
+done
