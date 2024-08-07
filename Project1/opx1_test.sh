@@ -39,7 +39,7 @@ touch opx"
 
 Task2=(
 	"cd /home/ec2-user/test4;
-	scp -r * ${User}@${server}:/home/ec2-user/test5/"
+	scp -r * '${User}@${server}':/home/ec2-user/test5/"
 )
 for server in "${Servers[@]}"; do
 	echo "Exicuting: tasks on $server"
@@ -48,5 +48,5 @@ done
 
 for server in "${Servers[@]}"; do
 	echo "Exicuting: tasks on $server"
-	ssh "${User}@${server}" "${Task2}"
+	Task2
 done
