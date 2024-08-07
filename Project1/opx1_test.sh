@@ -33,12 +33,13 @@ Servers=("184.73.51.246"
 User=ec2-user
 
 Tasks=("cd /home/ec2-user/test4;	
-mkdir test5"
+mkdir test_01;
+touch opx"
 )
 
 Task2=(
-	"cd /home/ec2-user;
-	mkdir test5"
+	"cd /home/ec2-user/test4;
+	scp -r * ${User}@${server}:/home/ec2-user/test5/
 )
 for server in "${Servers[@]}"; do
 	echo "Exicuting: tasks on $server"
