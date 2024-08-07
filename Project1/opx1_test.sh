@@ -27,15 +27,32 @@ cd /home/ec2-user/hotfix/HOTFIX/OPX/Release_$release/HF_$HF
 
 VALIDATE $? "vaidation of HF is :"
 
-for i in "172.31.88.146" "172.31.82.79"
-do
-    ssh -q ec2-user@$i;
-    cd /home/ec2-user;
-    mkdir test1;
-done
-
 SERVER_LIST=/home/ec2-user/shell-scripting/Project1/server_list
 while read REMOTE_SERVER
 do
-        ssh -q ec2-user@$REMOTE_SERVER "cd /home/ec2-user; mkdir test3"
+        ssh ec2-user@$REMOTE_SERVER "cd /home/ec2-user; mkdir test3"
 done < $SERVER_LIST
+
+Servers=("172.31.88.146"
+"172.31.82.79")
+
+User=ec2-user
+
+Task1=(
+	"cd /home/ec2-user"
+	"mkdir test4"
+)
+
+Task2=(
+	"cd /home/ec2-user"
+	"mkdir test5"
+)
+for server in "${Servers[@]}"; do
+	echo "Exicuting: tasks on $server"
+	ssh "$(User)@$(server)" "${Task1}"
+done
+
+for server in "${Servers[@]}"; do
+	echo "Exicuting: tasks on $server"
+	ssh "$(User)@$(server)" "${Task2}"
+done
