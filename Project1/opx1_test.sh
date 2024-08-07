@@ -48,5 +48,5 @@ done
 
 for server in "${Servers[@]}"; do
 	echo "Exicuting: tasks on $server"
-	Task2
+	Task2()
 done
