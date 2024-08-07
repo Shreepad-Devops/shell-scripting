@@ -32,8 +32,8 @@ Servers=("184.73.51.246"
 
 User=ec2-user
 
-Tasks=("cd /home/ec2-user/test4"	
-"mkdir test5"
+Tasks=("cd /home/ec2-user/test4;	
+mkdir test5"
 )
 
 Task2=(
