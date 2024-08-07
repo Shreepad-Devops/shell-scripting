@@ -33,7 +33,6 @@ Servers=("184.73.51.246"
 User=ec2-user
 
 Task1=(
-	"cd /home/ec2-user"
 	"mkdir test4"
 )
 
