@@ -43,10 +43,10 @@ Task2=(
 )
 for server in "${Servers[@]}"; do
 	echo "Exicuting: tasks on $server"
-	ssh "$(User)@$(server)" "${Task1}"
+	ssh "${User}@${server}" "${Task1}"
 done
 
 for server in "${Servers[@]}"; do
 	echo "Exicuting: tasks on $server"
-	ssh "$(User)@$(server)" "${Task2}"
+	ssh "${User}@${server}" "${Task2}"
 done
