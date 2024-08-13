@@ -67,15 +67,6 @@ for server in "${Servers[@]}"; do
 	ssh "${User}@${server}" "${Task2}"
 done
 
-#for server in "${Servers[@]}"; do
-#	cd /home/ec2-user/test5/test3
-#	sh Load.sh > Status.txt.log
-#	while [[ $(grep -i "Successfully Finished Loading Collections" Status.txt.log)  != *"Successfully Finished Loading Collections"* ]]; do
-#  	echo "Waiting for startup..."
-#   	sleep 2
-#   	done
-#done
-
 
 
 
