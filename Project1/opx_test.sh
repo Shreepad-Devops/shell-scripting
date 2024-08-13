@@ -33,15 +33,21 @@ VALIDATE $? "vaidation of HF is :"
 
 #Go to the location and take the back up and create the new folder
 echo "Taking the backup and creating the new 
-Tasks=("cdd;	
+Task1=("cdd;	
 mv MainSystem1 MainSystem1_B4_$release;
 mv MainSystem2 MainSystem2_B4_$release;
 mkdir MainSystem1 MainSystem2;
 )
 
+Task2=(amr; cd ${AM_AMSEARCH}/bin;./amPing.ksh > status.log;
+result=cat $status.log;
+while [[ $(result) != *"UP"* ]]; do
+    sleep 5
+done)
+
 for server in "${Servers[@]}"; do
 	echo "Exicuting: tasks on $server"
-	ssh "${User}@${server}" "${Tasks}"
+	ssh "${User}@${server}" "${Task1}"
 done
 VALIDATE $? "Creation of new folder and backup :"
 
@@ -56,17 +62,11 @@ done
 VALIDATE $? "copy the code to OPX :"
 
 #check the Start and status
-Task2(cd ${AM_AMSEARCH}/bin;./amPing.ksh > status.log;
-result=cat $status.log;
-while [[ $(result) != *"Total time"* ]]; do
-    sleep 5
-done)
-
 for server in "${Servers[@]}"; do
 	echo "Exicuting: task2 on $server"
 	ssh "${User}@${server}" "${Task2}"
 done
-
+VALIDATE $? "Start up of OPX :"
 
 
 
