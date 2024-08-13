@@ -21,6 +21,19 @@ VALIDATE(){
 fi
 }
 
+Task1=("cdd;	
+mv MainSystem1 MainSystem1_B4_$release;
+mv MainSystem2 MainSystem2_B4_$release;
+mkdir MainSystem1 MainSystem2"
+)
+
+Task2=("amr; cd ${AM_AMSEARCH}/bin;./amPing.ksh > status.log;
+result=cat $status.log;
+while [[ $(result) != *"UP"* ]]; do
+    sleep 5
+done"
+)
+
 echo "please enter the HF, the needs to deploy"
 read "HF"
 
@@ -33,17 +46,6 @@ VALIDATE $? "vaidation of HF is :"
 
 #Go to the location and take the back up and create the new folder
 echo "Taking the backup and creating the new 
-Task1=("cdd;	
-mv MainSystem1 MainSystem1_B4_$release;
-mv MainSystem2 MainSystem2_B4_$release;
-mkdir MainSystem1 MainSystem2;
-)
-
-Task2=(amr; cd ${AM_AMSEARCH}/bin;./amPing.ksh > status.log;
-result=cat $status.log;
-while [[ $(result) != *"UP"* ]]; do
-    sleep 5
-done)
 
 for server in "${Servers[@]}"; do
 	echo "Exicuting: tasks on $server"
