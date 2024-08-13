@@ -45,7 +45,7 @@ cd /petnas/vfk/genadm/hotfix/HOTFIX/OPX/Release_$release/HF_$HF
 VALIDATE $? "vaidation of HF is :"
 
 #Go to the location and take the back up and create the new folder
-echo "Taking the backup and creating the new 
+echo -e "$G Taking the backup and creating the new $N"
 
 for server in "${Servers[@]}"; do
 	echo "Exicuting: tasks on $server"
@@ -54,7 +54,7 @@ done
 VALIDATE $? "Creation of new folder and backup :"
 
 #copy the code to OPX
-echo "copying the code OPX"
+echo -e "$G copying the code OPX $N"
 for server in "${Servers[@]}"; do
 	echo "Exicuting: tasks on $server"
 	cd /petnas/vfk/genadm/hotfix/HOTFIX/OPX/Release_$release/HF_$HF
@@ -64,6 +64,7 @@ done
 VALIDATE $? "copy the code to OPX :"
 
 #check the Start and status
+echo -e "$G Startting the server $N"
 for server in "${Servers[@]}"; do
 	echo "Exicuting: task2 on $server"
 	ssh "${User}@${server}" "${Task2}"
