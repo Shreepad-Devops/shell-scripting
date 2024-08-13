@@ -18,7 +18,7 @@ VALIDATE(){
 		echo -e "$2 ...$G Success $N"
 	else
 		echo -e "$2 ...$R Failure $N"
-fi
+	fi
 }
 
 Task1=("cdd;	
