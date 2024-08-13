@@ -34,6 +34,24 @@ while [[ $(result) != *"UP"* ]]; do
 done"
 )
 
+Task3=("cd /opxnas/opx/${server}/amsearch-support/data/MainSystem1;
+touch Load.start;
+result=grep -i "Successfully Finished Loading Collections" Status.txt.log;
+while [[ $result != *"Successfully Finished Loading Collections"* ]]; do
+	echo "Waiting for startup..."
+    	sleep 5
+done"
+)
+
+Task4=("cd /opxnas/opx/${server}/amsearch-support/data/MainSystem2;
+touch Load.start;
+result=grep -i "Successfully Finished Loading Collections" Status.txt.log;
+while [[ $result != *"Successfully Finished Loading Collections"* ]]; do
+	echo "Waiting for startup..."
+    	sleep 5
+done"
+)
+ 
 echo "please enter the HF, the needs to deploy"
 read "HF"
 
@@ -44,7 +62,7 @@ cd /petnas/vfk/genadm/hotfix/HOTFIX/OPX/Release_$release/HF_$HF
 
 VALIDATE $? "vaidation of HF is :"
 
-#Go to the location and take the back up and create the new folder
+##Go to the location and take the back up and create the new folder
 echo -e "$G Taking the backup and creating the new $N"
 
 for server in "${Servers[@]}"; do
@@ -53,7 +71,7 @@ for server in "${Servers[@]}"; do
 done
 VALIDATE $? "Creation of new folder and backup :"
 
-#copy the code to OPX
+##copy the code to OPX
 echo -e "$G copying the code OPX $N"
 for server in "${Servers[@]}"; do
 	echo "Exicuting: tasks on $server"
@@ -63,7 +81,7 @@ for server in "${Servers[@]}"; do
 done
 VALIDATE $? "copy the code to OPX :"
 
-#check the Start and status
+##check the Start and status
 echo -e "$G Startting the server $N"
 for server in "${Servers[@]}"; do
 	echo "Exicuting: task2 on $server"
@@ -71,7 +89,19 @@ for server in "${Servers[@]}"; do
 done
 VALIDATE $? "Start up of OPX :"
 
+##collections load on MainSystem1
+echo -e "$G collections load on MainSystem1 $N"
+for server in "${Servers[@]}"; do
+	ssh "${User}@${server}" "${Task3}"
+done
+VALIDATE $? "collections load on MainSystem1 :"
 
+##collections load on MainSystem2
+echo -e "$G collections load on MainSystem2 $N"
+for server in "${Servers[@]}"; do
+	ssh "${User}@${server}" "${Task4}"
+done
+VALIDATE $? "collections load on MainSystem2 :"
 
 
 
