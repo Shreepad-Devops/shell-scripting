@@ -28,16 +28,16 @@ mkdir MainSystem1 MainSystem2"
 )
 
 Task2=("amr; cd ${AM_AMSEARCH}/bin;./amPing.ksh > status.log;
-result=cat $status.log;
-while [[ $(result) != *"UP"* ]]; do
+result=$(cat status.log);
+while [ "$result" != "UP" ]; do
     sleep 5
 done"
 )
 
 Task3=("cd /opxnas/opx/${server}/amsearch-support/data/MainSystem1;
 touch Load.start;
-result=grep -i "Successfully Finished Loading Collections" Status.txt.log;
-while [[ $result != *"Successfully Finished Loading Collections"* ]]; do
+result=$(grep -i "Successfully Finished Loading Collections" Status.txt.log):;
+while [ $result != *"Successfully Finished Loading Collections"* ]; do
 	echo "Waiting for startup..."
     	sleep 5
 done"
@@ -45,8 +45,8 @@ done"
 
 Task4=("cd /opxnas/opx/${server}/amsearch-support/data/MainSystem2;
 touch Load.start;
-result=grep -i "Successfully Finished Loading Collections" Status.txt.log;
-while [[ $result != *"Successfully Finished Loading Collections"* ]]; do
+result=$(grep -i "Successfully Finished Loading Collections" Status.txt.log);
+while [ $result != *"Successfully Finished Loading Collections"* ]; do
 	echo "Waiting for startup..."
     	sleep 5
 done"
