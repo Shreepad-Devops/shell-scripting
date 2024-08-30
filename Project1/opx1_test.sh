@@ -24,7 +24,7 @@ mkdir MainSystem1 MainSystem2"
 )
 
 
-Task2=("amr; cd ${AM_AMSEARCH}/bin;./amPing.ksh > status.log;
+Task2=("amr > status.log;
 result1=$(cat status.log);
 while [[ "$result1" != *"UP"* ]]; do
     sleep 5
@@ -32,7 +32,7 @@ done"
 )
 
 Task3=("cd /home/ec2-user/test5/test3/MainSystem1;
-touch Load.start;
+sh startmain1.sh > Status.txt.log;
 result2=$(grep -i "Successfully Finished Loading Collections" Status.txt.log);
 while [ $result2 != *"Successfully Finished Loading Collections"* ]; do
 	echo "Waiting for startup..."
@@ -40,8 +40,8 @@ while [ $result2 != *"Successfully Finished Loading Collections"* ]; do
 done"
 )
 
-Task3=("cd /home/ec2-user/test5/test3/MainSystem2;
-touch Load.start;
+Task4=("cd /home/ec2-user/test5/test3/MainSystem2;
+sh startmain2.sh > Status.txt.log;
 result3=$(grep -i "Successfully Finished Loading Collections" Status.txt.log);
 while [ $result3 != *"Successfully Finished Loading Collections"* ]; do
 	echo "Waiting for startup..."
@@ -59,8 +59,8 @@ cd /home/ec2-user/hotfix/HOTFIX/OPX/Release_$release/HF_$HF
 
 VALIDATE $? "vaidation of HF is :"
 
-Servers=("184.73.51.246"
-"18.233.163.39")
+Servers=("54.158.55.28"
+"44.201.164.124")
 
 User=ec2-user
 
