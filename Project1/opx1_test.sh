@@ -31,8 +31,7 @@ mkdir MainSystem1 MainSystem2"
 
 Task2=("cd /home/ec2-user/test5/test3;
 sh startup.sh > status.log;
-File="/home/ec2-user/test5/test3/status.log"
-while [[ ! -s  "$File" ]]; do
+while [[ $(grep -i 'UP' status.log) != "UP" ]]; do
     sleep 5
 done"
 )
