@@ -31,7 +31,7 @@ mkdir MainSystem1 MainSystem2"
 
 Task2=("cd /home/ec2-user/test5/test3;
 sh startup.sh > status.log;
-while [[ $(grep -i 'UP' status.log) != "UP" ]]; do
+while [[ $(grep -i 'UP' status.log) != *"UP"* ]]; do
     sleep 5
 done"
 )
@@ -88,7 +88,6 @@ for server in "${Servers[@]}"; do
 	echo "Exicuting: task2 on $server"
 	ssh "${User}@${server}" "${Task2}"
 done
-VALIDATE $? "Start up of OPX :"
 
 ##collections load on MainSystem1
 echo -e "$G collections load on MainSystem1 $N"
