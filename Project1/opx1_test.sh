@@ -32,7 +32,7 @@ mkdir MainSystem1 MainSystem2"
 Task2=("cd /home/ec2-user/test5/test3;
 sh startup.sh > status.log;
 result1=$(cat status.log);
-while [[ "$result1" != "UP" ]]; do
+while [[ $result1 != "UP" ]]; do
     sleep 5
 done"
 )
