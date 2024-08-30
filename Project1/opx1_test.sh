@@ -36,20 +36,12 @@ sh startuptest.sh"
 
 Task3=("cd /home/ec2-user/test5/test3/MainSystem1;
 sh startmain1.sh > Status.txt.log;
-result2=$(grep -i "Successfully Finished Loading Collections" Status.txt.log);
-while [ $result2 != "Successfully Finished Loading Collections" ]; do
-	echo "Waiting for startup..."
-    sleep 5
-done"
+sh loadstatus1.sh"
 )
 
 Task4=("cd /home/ec2-user/test5/test3/MainSystem2;
 sh startmain2.sh > Status.txt.log;
-result3=$(grep -i "Successfully Finished Loading Collections" Status.txt.log);
-while [ $result3 != *"Successfully Finished Loading Collections"* ]; do
-	echo "Waiting for startup..."
-    sleep 5
-done"
+sh loadstatus2.sh"
 )
 
 cd /home/ec2-user/hotfix/HOTFIX/OPX/Release_$release/HF_$HF
