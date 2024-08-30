@@ -31,9 +31,7 @@ mkdir MainSystem1 MainSystem2"
 
 Task2=("cd /home/ec2-user/test5/test3;
 sh startup.sh > status.log;
-while [[ $(grep -i 'UP' status.log) != *"UP"* ]]; do
-    sleep 5
-done"
+sh startuptest.sh"
 )
 
 Task3=("cd /home/ec2-user/test5/test3/MainSystem1;
@@ -41,7 +39,7 @@ sh startmain1.sh > Status.txt.log;
 result2=$(grep -i "Successfully Finished Loading Collections" Status.txt.log);
 while [ $result2 != "Successfully Finished Loading Collections" ]; do
 	echo "Waiting for startup..."
-    	sleep 5
+    sleep 5
 done"
 )
 
@@ -50,7 +48,7 @@ sh startmain2.sh > Status.txt.log;
 result3=$(grep -i "Successfully Finished Loading Collections" Status.txt.log);
 while [ $result3 != *"Successfully Finished Loading Collections"* ]; do
 	echo "Waiting for startup..."
-    	sleep 5
+    sleep 5
 done"
 )
 
@@ -88,6 +86,7 @@ for server in "${Servers[@]}"; do
 	echo "Exicuting: task2 on $server"
 	ssh "${User}@${server}" "${Task2}"
 done
+VALIDATE $? "Start and status :"
 
 ##collections load on MainSystem1
 echo -e "$G collections load on MainSystem1 $N"
