@@ -29,7 +29,7 @@ mkdir MainSystem1 MainSystem2"
 )
 
 
-Task2=("amr > status.log;
+Task2=("'amr' > status.log;
 result1=$(cat status.log);
 while [[ "$result1" != *"UP"* ]]; do
     sleep 5
