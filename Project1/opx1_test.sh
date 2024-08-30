@@ -1,11 +1,16 @@
 #!/bin/bash
 
 Time_Stamp="$date +%f_%H%M%S"
-LogFile = /petnas/vfk/genadm/Shreepad/Scripts/test_$Time_Stamp.log
 R="\e[31m"
 G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
+
+echo "please enter the HF, the needs to deploy"
+read "HF"
+
+echo " please enter the release (ex: 2407)"
+read "release"
 
 VALIDATE(){
 	if [ $1 -eq 0 ]
@@ -49,12 +54,6 @@ while [ $result3 != *"Successfully Finished Loading Collections"* ]; do
 done"
 )
 
-echo "please enter the HF, the needs to deploy"
-read "HF"
-
-echo " please enter the release (ex: 2407)"
-read "release"
-
 cd /home/ec2-user/hotfix/HOTFIX/OPX/Release_$release/HF_$HF
 
 VALIDATE $? "vaidation of HF is :"
@@ -77,7 +76,7 @@ VALIDATE $? "Creation of new folder and backup :"
 echo -e "$G copying the code OPX $N"
 for server in "${Servers[@]}"; do
 	echo "Exicuting: tasks on $server"
-	cd /home/ec2-user/Release_$release/HF_$HF
+	cd /home/ec2-user/hotfix/HOTFIX/OPX/Release_$release/HF_$HF
 	scp -r * ${User}@${server}:/home/ec2-user/test5/test3/MainSystem1
  	scp -r * ${User}@${server}:/home/ec2-user/test5/test3/MainSystem2
 done
