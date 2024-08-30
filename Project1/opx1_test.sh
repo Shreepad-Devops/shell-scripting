@@ -32,7 +32,7 @@ mkdir MainSystem1 MainSystem2"
 Task2=("cd /home/ec2-user/test5/test3;
 sh startup.sh > status.log;
 result1=$(cat status.log);
-while [[ "$result1" != *"UP"* ]]; do
+while [[ "$result1" != "UP" ]]; do
     sleep 5
 done"
 )
@@ -40,7 +40,7 @@ done"
 Task3=("cd /home/ec2-user/test5/test3/MainSystem1;
 sh startmain1.sh > Status.txt.log;
 result2=$(grep -i "Successfully Finished Loading Collections" Status.txt.log);
-while [ $result2 != *"Successfully Finished Loading Collections"* ]; do
+while [ $result2 != "Successfully Finished Loading Collections" ]; do
 	echo "Waiting for startup..."
     	sleep 5
 done"
