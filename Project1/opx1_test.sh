@@ -48,8 +48,8 @@ cd /home/ec2-user/hotfix/HOTFIX/OPX/Release_$release/HF_$HF
 
 VALIDATE $? "vaidation of HF is :"
 
-Servers=("54.158.55.28"
-"44.201.164.124")
+Servers=("18.207.186.186"
+"44.201.234.160")
 
 User=ec2-user
 
