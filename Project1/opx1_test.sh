@@ -12,8 +12,8 @@ read "HF"
 echo " please enter the release (ex: 2407)"
 read "release"
 
-Servers=("18.207.186.186"
-"44.201.234.160")
+Servers=("44.202.60.88"
+"3.89.93.197")
 
 User=ec2-user
 
@@ -27,29 +27,29 @@ VALIDATE(){
 	fi
 }
 
-Task1=("cd /home/ec2-user/test5/test3;
+Task1=("cd /home/$User/test5/test3;
 mv MainSystem1 MainSystem1_B4_$release;
 mv MainSystem2 MainSystem2_B4_$release;
 mkdir MainSystem1 MainSystem2"
 )
 
 
-Task2=("cd /home/$(User)/test5/test3;
+Task2=("cd /home/$User/test5/test3;
 sh startup.sh > status.log;
 sh startuptest.sh"
 )
 
-Task3=("cd /home/$(User)/test5/test3/MainSystem1;
+Task3=("cd /home/$User/test5/test3/MainSystem1;
 sh startmain1.sh > Status.txt.log;
 sh loadstatus1.sh"
 )
 
-Task4=("cd /home/$(User)/test5/test3/MainSystem2;
+Task4=("cd /home/$User/test5/test3/MainSystem2;
 sh startmain2.sh > Status.txt.log;
 sh loadstatus2.sh"
 )
 
-cd /home/$(User)/hotfix/HOTFIX/OPX/Release_$release/HF_$HF
+cd /home/$User/hotfix/HOTFIX/OPX/Release_$release/HF_$HF
 
 VALIDATE $? "vaidation of HF is :"
 
@@ -67,8 +67,8 @@ echo -e "$G copying the code OPX $N"
 for server in "${Servers[@]}"; do
 	echo "Exicuting: tasks on $server"
 	cd /home/ec2-user/hotfix/HOTFIX/OPX/Release_$release/HF_$HF
-	scp -r * ${User}@${server}:/home/$(User)/test5/test3/MainSystem1
- 	scp -r * ${User}@${server}:/home/$(User)/test5/test3/MainSystem2
+	scp -r * ${User}@${server}:/home/$User/test5/test3/MainSystem1
+ 	scp -r * ${User}@${server}:/home/$User/test5/test3/MainSystem2
 done
 VALIDATE $? "copy the code to OPX :"
 
